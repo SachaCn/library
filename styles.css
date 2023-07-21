@@ -9,6 +9,10 @@ body {
     min-height: 100vh;
 }
 
+li {
+    list-style: none;
+}
+
 h1 {
     text-align: center;
     font-size: 50px;
@@ -52,3 +56,21 @@ h1 {
 .card h4 {
     margin-bottom: 15px;
 }
+
+.form-container {
+    display: grid;
+    justify-content: center;
+
+}
+
+.form-container form {
+    border: solid 1px black;
+    width: max-content;
+    padding: 15px 10px;
+}
+
+.form-container li {
+    display: grid;
+    gap: 5px;
+}
+

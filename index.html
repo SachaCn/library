@@ -9,11 +9,35 @@
 <body>
     <h1>Web library</h1>
     <div class="button-container">
-        <button class="'add-book">Add a new book</button>
+        <button class="add-book">Add a new book</button>
         <button class="remove-book">Remove a book</button>
     </div>
     <div class="cards-container">
     </div>
+    <div class="form-container">
+        <form id ="myForm" action="#" method="post">
+            <ul>
+                <li>
+                    <label for="title">Title :</label>
+                    <input type="text" name="title" id="title"  required>
+                </li>
+                <li>
+                    <label for="author">Author :</label>
+                    <input type="text" name="author" id="author"  required>
+                </li>
+                <li>
+                    <label for="pages">Pages :</label>
+                    <input type="text" name="pages" id="pages"  required>
+                </li>
+                <li>
+                    <label for="read-status">Read status :</label>
+                    <input type="text" name="read-status" id="read-status"  required>
+                </li>
+            </ul>
+            <button id="submitBtn" type="submit">Submit</button>
+        </form>
+    </div>
+
     <script rel="text/javascript" src="script.js"></script>
 </body>
 </html>

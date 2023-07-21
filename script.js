@@ -48,7 +48,13 @@ function createElementWithText(elementTag, className, textContent) {
 }
 
 createBookCard(theHobbit);
+createBookCard(theAlchemist);
+createBookCard(theIcePeople);
+createBookCard(blackMan);
+
+
 
 const addBook = document.querySelector(".add-book");
-const removeBook = document.querySelector(".remove-book");
+const removeBook = document.querySelector("#remove-book");
 
+addBook.addEventListener('click', () => prompt("Add a book"));
