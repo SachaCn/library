@@ -58,15 +58,32 @@ h1 {
 }
 
 .form-container {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    background-color: rgba(0,0,0,0.7);
+    display: none;
+}
 
+.cross {
+    width: 20px;
+    place-self: end;
+    cursor: pointer;
 }
 
 .form-container form {
     border: solid 1px black;
     width: max-content;
     padding: 15px 10px;
+    padding-top: 5px;
+    display: grid;
+    background-color: #fff;
 }
 
 .form-container li {
@@ -74,3 +91,11 @@ h1 {
     gap: 5px;
 }
 
+.form-container button {
+    margin-top: 10px;
+}
+
+
+.show-form {
+    display: flex;
+}

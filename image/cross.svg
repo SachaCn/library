@@ -1,0 +1,5 @@
+<!-- sample rectangle -->
+<svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.1363 7.65234L7.65234 15.1363M7.65234 7.65234L15.1363 15.1363" stroke="#1C1917" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.3943 21.7886C17.1349 21.7886 21.7886 17.1349 21.7886 11.3943C21.7886 5.65369 17.1349 1 11.3943 1C5.65369 1 1 5.65369 1 11.3943C1 17.1349 5.65369 21.7886 11.3943 21.7886Z" stroke="#1C1917" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -10,28 +10,31 @@
     <h1>Web library</h1>
     <div class="button-container">
         <button class="add-book">Add a new book</button>
-        <button class="remove-book">Remove a book</button>
     </div>
     <div class="cards-container">
     </div>
     <div class="form-container">
-        <form id ="myForm" action="#" method="post">
+        <form>
+            <img class="cross" src="image/cross1.svg">
             <ul>
                 <li>
                     <label for="title">Title :</label>
-                    <input type="text" name="title" id="title"  required>
+                    <input type="text" name="title" id="title" placeholder="Harry Potter"  required>
                 </li>
                 <li>
                     <label for="author">Author :</label>
-                    <input type="text" name="author" id="author"  required>
+                    <input type="text" name="author" id="author" placeholder="J.K Rowling"  required>
                 </li>
                 <li>
                     <label for="pages">Pages :</label>
-                    <input type="text" name="pages" id="pages"  required>
+                    <input type="number" name="pages" id="pages" min="0" required>
                 </li>
                 <li>
                     <label for="read-status">Read status :</label>
-                    <input type="text" name="read-status" id="read-status"  required>
+                    <select type="text" name="read-status" id="read-status"  required>
+                        <option value="read" >read</option>
+                        <option value="not-read" >not read yet</option>
+                    </select>
                 </li>
             </ul>
             <button id="submitBtn" type="submit">Submit</button>
