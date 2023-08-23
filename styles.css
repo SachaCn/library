@@ -99,3 +99,16 @@ h1 {
 .show-form {
     display: flex;
 }
+
+.card {
+    position: relative;
+}
+
+.remove-card {
+   display: block;
+   width: 20px;
+   position: absolute;
+   top: 5px;
+   right: 5px;
+   cursor: pointer;
+}

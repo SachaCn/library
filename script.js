@@ -5,7 +5,7 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
-};
+}
 
 const theHobbit = new Book("Hobbit", "J.R.R Tolkien", "295", "not read yet");
 const theAlchemist = new Book("the Alchemist", "Paulo Coelho", "192", "read");
@@ -15,7 +15,7 @@ const Outsphere = new Book("Outsphere", "Guy-Roger Duvert", "317", "not read yet
 
 function addBookToLibrary(book) {
     return myLibrary.push(book);
-};
+}
 
 addBookToLibrary(theHobbit);
 addBookToLibrary(theAlchemist);
@@ -23,31 +23,25 @@ addBookToLibrary(blackMan);
 addBookToLibrary(theIcePeople);
 addBookToLibrary(Outsphere);
 
-function createElementWithText(elementTag, className, textContent) {
-    const element = document.createElement(elementTag);
-    element.classList.add(className);
-    element.textContent = textContent;
-    return element;
-}
+const mainContainer = document.querySelector(".cards-container");
 
 function createBookCard(book) {
-    const main = document.querySelector(".cards-container");
-    const div = document.createElement("div");
-    const title = createElementWithText("h4", "title", book.title);
-    const author = createElementWithText("p", "author", book.author);
-    const pages = createElementWithText("p", "pages", `${book.pages} pages`);
-    const readStatus = createElementWithText("p", "read-status", book.read);
+    const card = document.createElement("div");
 
-    div.classList.add("card");
-    main.appendChild(div);
-
-    div.appendChild(title);
-    div.appendChild(author);
-    div.appendChild(pages);
-    div.appendChild(readStatus);
+    card.classList.add("card");
+    card.setAttribute("data-index", `${myLibrary.indexOf(book)}`);
+    mainContainer.appendChild(card);
+    card.insertAdjacentHTML(
+        "afterbegin",
+        `<img class="remove-card" src="image/cross1.svg">
+                                            <h4 class="title">${book.title}</h4>
+                                            <p class="author">${book.author}</p>
+                                            <p class="pages">${book.pages}</p>
+                                            <p class="read-status">${book.read}</p>`
+    );
 }
 
-myLibrary.forEach(books => createBookCard(books));
+myLibrary.forEach((books) => createBookCard(books));
 
 /* Open form */
 const addBook = document.querySelector(".add-book");
@@ -65,7 +59,6 @@ function closeForm() {
 addBook.addEventListener("click", openForm);
 cross.addEventListener("click", closeForm);
 
-
 /* Retrieve form data */
 const form = document.querySelector("form");
 
@@ -74,7 +67,7 @@ form.addEventListener("submit", (e) => {
     const formData = new FormData(form);
 
     let arr = [];
-    for(item of formData) {
+    for (item of formData) {
         arr.push(item[1]);
     }
     const newBook = new Book(arr[0], arr[1], arr[2], arr[3]);
@@ -84,3 +77,29 @@ form.addEventListener("submit", (e) => {
     closeForm();
 });
 
+// Removing cards plus update myLibrary and data-index
+const removeCard = document.querySelectorAll(".remove-card");
+
+function removeBook(e) {
+    let target = e.target.parentNode;
+    let targetIndex = target.getAttribute('data-index');
+    target.remove();
+    myLibrary.splice(targetIndex, 1);
+    
+    const cards = document.querySelectorAll(".card");
+    
+    // Update data-index value after removing an element
+    cards.forEach(element => {
+        const currentIndex = parseInt(element.getAttribute('data-index'));
+        if (currentIndex > targetIndex) {
+            console.log(currentIndex);
+            element.setAttribute('data-index', currentIndex - 1);
+        }
+    });
+};
+
+mainContainer.addEventListener("click", (e) => {
+    if(e.target.classList.contains("remove-card")) {
+        removeBook(e);
+    }
+});
