@@ -5,7 +5,28 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
-}
+};
+
+Book.prototype.changeReadStatus = function() {
+    if(this.read == "read") {
+        this.read = "not read yet";
+    } else if (this.read == "not read yet") {
+        this.read = "read";
+    }
+};
+
+const mainContainer = document.querySelector(".cards-container");
+
+
+mainContainer.addEventListener("click", (e) => {
+    const readStatus= document.querySelector(".read-status");
+
+    if(!e.target.classList.contains("read-status")) return;
+
+    let domIndex = e.target.parentNode.getAttribute("data-index");
+    myLibrary[domIndex].changeReadStatus();
+    e.target.textContent = myLibrary[domIndex].read;
+});
 
 const theHobbit = new Book("Hobbit", "J.R.R Tolkien", "295", "not read yet");
 const theAlchemist = new Book("the Alchemist", "Paulo Coelho", "192", "read");
@@ -15,7 +36,7 @@ const Outsphere = new Book("Outsphere", "Guy-Roger Duvert", "317", "not read yet
 
 function addBookToLibrary(book) {
     return myLibrary.push(book);
-}
+};
 
 addBookToLibrary(theHobbit);
 addBookToLibrary(theAlchemist);
@@ -23,11 +44,9 @@ addBookToLibrary(blackMan);
 addBookToLibrary(theIcePeople);
 addBookToLibrary(Outsphere);
 
-const mainContainer = document.querySelector(".cards-container");
 
 function createBookCard(book) {
     const card = document.createElement("div");
-
     card.classList.add("card");
     card.setAttribute("data-index", `${myLibrary.indexOf(book)}`);
     mainContainer.appendChild(card);
@@ -36,10 +55,12 @@ function createBookCard(book) {
         `<img class="remove-card" src="image/cross1.svg">
                                             <h4 class="title">${book.title}</h4>
                                             <p class="author">${book.author}</p>
-                                            <p class="pages">${book.pages}</p>
+                                            <p class="pages">${book.pages} pages</p>
                                             <p class="read-status">${book.read}</p>`
     );
 }
+
+
 
 myLibrary.forEach((books) => createBookCard(books));
 
@@ -77,7 +98,7 @@ form.addEventListener("submit", (e) => {
     closeForm();
 });
 
-// Removing cards plus update myLibrary and data-index
+// Removing book card plus update myLibrary and data-index
 const removeCard = document.querySelectorAll(".remove-card");
 
 function removeBook(e) {
