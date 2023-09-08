@@ -8,10 +8,10 @@ function Book(title, author, pages, read) {
 };
 
 Book.prototype.changeReadStatus = function() {
-    if(this.read == "read") {
-        this.read = "not read yet";
-    } else if (this.read == "not read yet") {
-        this.read = "read";
+    if(this.read == "Read") {
+        this.read = "Not read";
+    } else if (this.read == "Not read") {
+        this.read = "Read";
     }
 };
 
@@ -28,11 +28,11 @@ mainContainer.addEventListener("click", (e) => {
     e.target.textContent = myLibrary[domIndex].read;
 });
 
-const theHobbit = new Book("Hobbit", "J.R.R Tolkien", "295", "not read yet");
-const theAlchemist = new Book("the Alchemist", "Paulo Coelho", "192", "read");
-const blackMan = new Book("Black man", "Richard Morgan", "571", "read");
-const theIcePeople = new Book("The ice people", "René Barjavel", "317", "not read yet");
-const Outsphere = new Book("Outsphere", "Guy-Roger Duvert", "317", "not read yet");
+const theHobbit = new Book("Hobbit", "J.R.R Tolkien", "295", "Not read");
+const theAlchemist = new Book("the Alchemist", "Paulo Coelho", "192", "Read");
+const blackMan = new Book("Black man", "Richard Morgan", "571", "Read");
+const theIcePeople = new Book("The ice people", "René Barjavel", "317", "Not read");
+const Outsphere = new Book("Outsphere", "Guy-Roger Duvert", "317", "Not read");
 
 function addBookToLibrary(book) {
     return myLibrary.push(book);
